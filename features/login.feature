@@ -4,8 +4,7 @@ Feature: The Internet Guinea Pig Website
 
     Given I am on the login page
     When I login with <username> and <password>
-    Then I click login
-
+    #Step that verifies whether or not user has successfully logged on
     Examples:
       | username | password             |
       | tomsmith | SuperSecretPassword! |
