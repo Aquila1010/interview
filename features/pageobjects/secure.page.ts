@@ -9,6 +9,17 @@ class SecurePage extends Page {
      * define selectors using getter methods
      */
 
+    protected SELECTOR: Record<string, string> = {
+        FLASH_MESSAGE: '#flash',
+    }
+
+    public get getFlashMessage() {
+        return $(this.SELECTOR.FLASH_MESSAGE);
+    }
+
+    public async getFlashMessageText(): Promise<string> {
+        return await this.getFlashMessage.getText();
+    }
 
 
 }

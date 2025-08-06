@@ -7,8 +7,9 @@ import SecurePage from '../pageobjects/secure.page.js';
 const pages = {
     login: LoginPage
 }
+type pageName = keyof  typeof pages;
 
-Given(/^I am on the (\w+) page$/, async (page) => {
+Given(/^I am on the (\w+) page$/, async (page: pageName) => {
     await pages[page].open()
 });
 
@@ -17,7 +18,7 @@ When(/^I login with (\w+) and (.+)$/, async (username, password) => {
 });
 
 Then(/^I should see a flash message saying (.*)$/, async (message) => {
-    // .toBeExisting
-    // .toHaveText
+    expect (await (SecurePage.getFlashMessageText())).toBeExisting()
+    expect (await (SecurePage.getFlashMessageText())).toHaveText(expect.stringContaining(message));
 });
 
